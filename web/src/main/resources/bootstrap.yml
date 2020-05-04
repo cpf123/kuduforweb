@@ -1,0 +1,48 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:12000  # 配置中心服务端
+      #      uri: http://127.0.0.1:12000
+      name: web # 应用名称
+      profile: dev # 环境代号
+      label: master  # git的分支名称
+#ribbon:
+#  eureka:
+#    enabled: true
+
+#server:
+#  port: 9012
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://10.211.55.4:6868/eureka/
+#  instance:
+#    prefer-ip-address: true #模块之间可以跨域访问  可以在服务器上测
+#
+#spring:
+#  application:
+#    name: tensquare-web #前台
+#  rabbitmq:
+#    host: 10.211.55.4
+#
+#zuul:
+#  routes:
+#  host:
+#    connect-timeout-millis: 10000
+#    socket-timeout-millis: 60000
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 60000
+#ribbon:
+#  ReadTimeout: 60000
+#  ConnectTimeout: 60000  #BUG解决
+#
+#  command:
+#    default:
+#      execution:
+#        timeout:
+#          enabled: false

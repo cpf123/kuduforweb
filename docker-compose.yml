@@ -1,0 +1,116 @@
+# 使用说明 V2.1.0
+# 1. 使用docker-compose  宿主机不需要配置host来发现
+# 2. 无需修改源码，根目录  docker-compose up 即可
+# 3. 静静等待服务启动
+
+version: '2'
+services:
+  platform-mysql:
+    build:
+      context: ./
+      dockerfile: ./doc/db/Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    restart: always
+    container_name: platform-mysql
+    image: platform-mysql
+    ports:
+      - 3306:3306
+
+  platform-zookeeper:
+    image: zookeeper:3.4.13
+    restart: always
+
+  platform-redis:
+    image: redis:4.0.10
+    restart: always
+    container_name: platform-redis
+
+  platform-eureka:
+    build:
+      context: ./
+      dockerfile: ./platform-eureka/Dockerfile
+    restart: always
+    container_name: platform-eureka
+    image: platform-eureka
+    ports:
+      - 8761:8761
+
+  platform-config:
+    build:
+      context: ./
+      dockerfile: ./platform-config/Dockerfile
+    restart: always
+    container_name: platform-config
+    image: platform-config
+
+  platform-gateway:
+    build:
+      context: ./
+      dockerfile: ./platform-gateway/Dockerfile
+    restart: always
+    container_name: platform-gateway
+    image: platform-gateway
+    ports:
+      - 9999:9999
+
+  platform-auth:
+    build:
+      context: ./
+      dockerfile: ./platform-auth/Dockerfile
+    restart: always
+    container_name: platform-auth
+    image: platform-auth
+
+  platform-upms:
+    build:
+      context: ./
+      dockerfile: ./platform-upms/platform-upms-biz/Dockerfile
+    restart: always
+    container_name: platform-upms
+    image: platform-upms
+
+  platform-monitor:
+    build:
+      context: ./
+      dockerfile: ./platform-visual/platform-monitor/Dockerfile
+    restart: always
+    image: platform-monitor
+    container_name: platform-monitor
+    ports:
+      - 5001:5001
+
+  platform-daemon:
+    build:
+      context: ./
+      dockerfile: ./platform-visual/platform-daemon/Dockerfile
+    restart: always
+    image: platform-daemon
+    container_name: platform-daemon
+
+  platform-codegen:
+    build:
+      context: ./
+      dockerfile: ./platform-visual/platform-codegen/Dockerfile
+    restart: always
+    image: platform-codegen
+    container_name: platform-codegen
+
+  platform-activiti:
+    build:
+      context: ./
+      dockerfile: ./platform-visual/platform-activiti/Dockerfile
+    restart: always
+    image: platform-activiti
+    container_name: platform-activiti
+
+  platform-tx-manager:
+    build:
+      context: ./
+      dockerfile: ./platform-visual/platform-tx-manager/Dockerfile
+    restart: always
+    image: platform-tx-manager
+    container_name: platform-tx-manager
+    ports:
+      - 5004:5004
+      - 9998:9998

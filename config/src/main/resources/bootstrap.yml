@@ -1,0 +1,49 @@
+server:
+  port: 12000
+spring:
+  application:
+    name: platform-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@git.jdb-dev.com:caopf/platform-config.git
+          ignoreLocalSshSettings: true  #为了激活基于属性的SSH配置
+          privateKey: |
+            -----BEGIN RSA PRIVATE KEY-----
+            MIIEpQIBAAKCAQEA6R8IaVVETsQ54mDZ94NTI+EbDLx0uIP+g/FJUWpv+Bazd1tB
+            RUavq2Gm2kPrHUIAPPtyJtGJ5zPAblf7BTyH8FjL4L29M0ERmi5R2P0klCGnB1Ad
+            RsErl1IroR1UN5T9LXy/DEUfK1IvtvLrbhV53u4bMX4bEU4sCcyZgmvGpfRdYBYH
+            X9kw2h3x9dKWWDREdL/5B0ORFgOehOhLt3jzyJ3TOsHPWeCr3GdQexqniubzfe6m
+            LkUg7pyiFzUziEFWeyHiRimRyxlsps1lwjn+1ncAfXtsvrMBbKlQ69tsarMBWaS/
+            xpNsIetZHVVffx9I4l2SGCrg2NL4G17eQK6XswIDAQABAoIBAQDbAp6iZsrvvQYs
+            mZTtJeF7+cWx53M4zjjUuGCLLpXW22zrmz3s2YW8Wteogtpl+FXE9O2/bmhCX6pP
+            gDSCLOYBdUrE7zzK5DynPxEB7IDq8dq70hZPHLfZSAdZK/as6ToZ+/J4ko+/4UyW
+            cg2gtGh0efnuO20uiuRwqFkn4B0WVnxCdZravphZ1exgR8h3JdjpCQu8kJQCS6yN
+            cFa3OApgWnQnP39OrdOZEIkABlLhUMOxLIQSfo1Aky3bW688AWwRBfVkO3ELHOzS
+            yfAMWQZa38pzxdK5p0/HT3g5IpmrJv7k8irdrXzy6ek5XyImWk9rXRo3mwo/ZjwT
+            QeZrxdlRAoGBAPZGlWyYILZu39CnHr7705Fu4gr7A/ilh7RgcIRvCu89HIUgIqQa
+            FA3HnAUC1mbwSU70tW0OFEmCUJnjhUeSR8LN2Qx2TeFly/dWNBC1VFR3D/wAAQW3
+            AX98Fl/IQbo/7qAgZcRUxv8uwnC7kFN9elnbCb3IGCsDSoCjMObI7ayfAoGBAPJT
+            evHHKE2+twX/aUmdfznkZ5GaeJ9We2dhk5gNJut87JWWWmMdFa2th1reQw834m9E
+            AsIZL7QLDyz4zAsHnB/R9xK5U8349Pqkax5BvTtCGN5478TKzA3EK8ukERkqtMVc
+            qqnZ5LrZmhna79VXRP74o8MQIM5a+2aS8JCJdOhtAoGBAJEv02+Nz9s9Sh1MKMgW
+            1gdrAz/N8+1mSLaCFFM+04du05138HQmG6R0BPq/TX6qMc2mXj7IihU8CiBvDWfA
+            SSYDDO5X4Fn9FV3fKBqhi/Gvr3C03+Vqmit6EAavnHAcuKUV9GjmQdq2ylKDgPZ3
+            huXqR7fmerkA268yheXIlrWpAoGANXG/7c8UzoC/cO0x1XCM/MGpLe25qLq0IMre
+            eGx+JvW4YA13BeEGRPW+ooXemF6k7BE94n0XjkfaIvsEVXJqNoJiUZjaKNU9goH8
+            tgGdsJIVVguqJebsNiUL26/lrX1DvTuA0FEkJymS2Rz2REEpEGraA01tTtW2GJtT
+            vyzxwckCgYEAvA/h5wTV2O/CR+rvTmEx9mDFl3TK+gohfmFxj6yz3Zx0Bv+/hHri
+            sOqzWl+agPCwIufapb3EnWoHhAmJUM7s1edsyXvbfxUUt26Sj3ggvTuUiLHp9JqT
+            Lp48DLZy0nIeBNb07UDputbB5htn7xF/DuiTHLyQBuHxOsB7Ndmjv40=
+            -----END RSA PRIVATE KEY-----
+  rabbitmq:
+    host: localhost
+    username: admin
+    password: admin
+
+management:  #暴露出发消息总线的地址
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh

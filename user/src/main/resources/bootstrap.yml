@@ -1,0 +1,29 @@
+spring:
+  cloud:
+    config:
+      #      uri: gitmanager@gitmanager.jdb-dev.com:caopf/platform-config.gitmanager  # 配置中心服务端
+      uri: http://localhost:12000  # 配置中心服务端
+      name: user # 应用名称
+      profile: dev # 环境代号
+      label: master  # git的分支名称
+
+#server:
+#  port: 9101
+#spring:
+#  application:
+#    name: platform-user #指定服务名
+#  datasource:
+#    driverClassName: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/platform?characterEncoding=UTF8
+#    username: root
+#    password: root
+#  jpa:
+#    database: MySQL
+#    show-sql: true
+#
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://10.211.55.2:6868/eureka/
+#  instance:
+#    prefer-ip-address: true #模块之间可以跨域访问  可以在服务器上测
